@@ -7,29 +7,42 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+  const Homepage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.only(top: 100, left: 36, right: 36),
+          padding: const EdgeInsets.symmetric(horizontal: 36),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SvgPicture.asset("assetes/images/intro.svg"),
+              Expanded(
+                flex: 3,
+                child: SvgPicture.asset(
+                  "assetes/images/intro.svg",
+                  height: MediaQuery.of(context).size.height * 0.4,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               const Text(
-                "Find Your Favouret Course",
+                "Find Your Favorite Course",
                 style: TextStyle(
-                    fontSize: 22,
-                    color: Color(0xff232323),
-                    fontWeight: FontWeight.w100),
+                  fontSize: 22,
+                  color: Color(0xff232323),
+                  fontWeight: FontWeight.w100,
+                ),
               ),
               const SizedBox(
                 height: 10,
               ),
               const Text(
-                "Browse our wide selection of courses \n and start learning today!.\nThis site helps you learn a wide \nvariety of courses across multiple fields",
+                "Browse our wide selection of courses and start learning today!.\nThis site helps you learn a wide variety of courses across multiple fields",
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w100,
@@ -40,24 +53,25 @@ class Homepage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 130),
+              Flexible(
+                flex: 1,
                 child: GestureDetector(
-                  onTap: (){
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx)=>Home()));
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (ctx) => Home()),
+                    );
                   },
                   child: Container(
                     width: double.infinity,
                     height: 50,
                     decoration: BoxDecoration(
-                        color: Color(0xff6cc4ee),
-                        borderRadius: BorderRadius.circular(30)),
-                    child: const Padding(
-                      padding: EdgeInsets.only(top: 11),
-                      child:  Text(
-                        textAlign: TextAlign.center,
+                      color: const Color(0xff6cc4ee),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Center(
+                      child: Text(
                         "Get Started",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
