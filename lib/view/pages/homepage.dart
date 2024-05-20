@@ -2,6 +2,7 @@
 
 import 'dart:math';
 
+import 'package:course_app/auth/screens/Welcome.dart';
 import 'package:course_app/view/pages/courseHome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -58,7 +59,7 @@ class Homepage extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => Home()),
+                      MaterialPageRoute(builder: (ctx) => Welcome()),
                     );
                   },
                   child: Container(
@@ -68,10 +69,10 @@ class Homepage extends StatelessWidget {
                       color: const Color(0xff6cc4ee),
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "Get Started",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
