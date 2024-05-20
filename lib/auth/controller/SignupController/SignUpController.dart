@@ -1,6 +1,7 @@
 import 'package:course_app/auth/models/User.dart';
 import 'package:course_app/core/database/DBHelper.dart';
 import 'package:course_app/read.dart';
+import 'package:course_app/view/pages/courseHome.dart';
 import 'package:flutter/material.dart';
 
 
@@ -52,7 +53,7 @@ class SignUpController {
         Navigator.push(
           _context,
           MaterialPageRoute(
-            builder: (context) => const ReadPage(),
+            builder: (context) => Home(),
           ),
         );
       }

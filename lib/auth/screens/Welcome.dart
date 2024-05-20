@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/CustomScaffold.dart';
+import '../../widgets/BaseScaffold.dart';
 import '../../widgets/WelcomeButton.dart';
 import 'LoginScreen.dart';
 import 'SignupScrean.dart';
@@ -34,7 +34,7 @@ class Welcome extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: '\nEnter personal details to your employee account',
+                        text: '\nEnter personal details to your student account',
                         style: TextStyle(
                           fontSize: 20,
                         ),
