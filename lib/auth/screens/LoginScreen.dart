@@ -5,7 +5,8 @@ import 'package:icons_plus/icons_plus.dart';
 
 import '../../read.dart';
 import '../../theme/BaseTheme';
-import '../../widgets/CustomScaffold.dart';
+import '../../view/pages/courseHome.dart';
+import '../../widgets/BaseScaffold.dart';
 import '../models/User.dart';
 import 'SignupScrean.dart';
 
@@ -63,7 +64,7 @@ class __LoginFormState extends State<_LoginForm> {
     });
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => ReadPage()), // Navigate to ReadPage
+      MaterialPageRoute(builder: (context) => Home()), // Navigate to ReadPage
     );
   }
 

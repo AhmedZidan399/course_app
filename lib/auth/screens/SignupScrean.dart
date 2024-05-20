@@ -4,7 +4,7 @@ import 'package:icons_plus/icons_plus.dart';
 
 import '../../core/database/LoginOperation.dart';
 import '../../theme/BaseTheme';
-import '../../widgets/CustomScaffold.dart';
+import '../../widgets/BaseScaffold.dart';
 import '../controller/SignupController/SignUpController.dart';
 import 'LoginScreen.dart';
 
