@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
     Course courseClass = Course();
     await courseClass.getCourse();
     setState(() {
-      courses = courseClass.course;
+      courses = courseClass.courses;
       _loading = false;
     });
   }
@@ -51,12 +51,15 @@ class _HomeState extends State<Home> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Find your Free Courses",
-                  style: GoogleFonts.notoSans(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff232323),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30,top: 10),
+                  child: Text(
+                    "Find your Free Courses",
+                    style: GoogleFonts.notoSans(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xff232323),
+                    ),
                   ),
                 ),
                 SvgPicture.asset(

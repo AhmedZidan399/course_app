@@ -1,5 +1,5 @@
 
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, library_private_types_in_public_api
 
 import 'package:course_app/controller/course.dart';
 import 'package:course_app/models/courseModel.dart';
@@ -13,7 +13,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Category extends StatefulWidget {
   final String category;
-  Category({required this.category});
+  const Category({super.key, required this.category});
   @override
   _CategoryState createState() => _CategoryState();
 }

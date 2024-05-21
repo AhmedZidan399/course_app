@@ -108,7 +108,7 @@ class __LoginFormState extends State<_LoginForm> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Welcome back',
+                        'Welcome',
                         style: TextStyle(
                           fontSize: 30.0,
                           fontWeight: FontWeight.w900,

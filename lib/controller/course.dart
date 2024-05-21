@@ -2,23 +2,36 @@ import 'dart:convert';
 import '../models/courseModel.dart';
 import 'package:http/http.dart' as http;
 
+
 class Course {
-  List<CourseModel> course = [];
+  List<CourseModel> courses = [];
 
   Future<void> getCourse() async {
-    var url = 'https://sumanjay.vercel.app/udemy';
-    var response = await http
-        .get(Uri.parse(url), headers: {'Access-Control-Allow-Origin': '*'});
+    var url = 'https://www.udemy.com/api-2.0/courses/?page=2&page_size=12';
+    var clientId = 'saidsabry';
+    var clientSecret = '12345678';
+    var bytes = utf8.encode('$clientId:$clientSecret');
+    var credentials = base64.encode(bytes);
+
+    var response = await http.get(
+      Uri.parse(url),
+      headers: {
+        'Authorization': 'Basic $credentials',
+        'Accept': 'application/json',
+      },
+    );
+
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      jsonData.forEach((element) {
+      var results = jsonData['results'] as List<dynamic>;
+      results.forEach((element) {
         CourseModel courseModel = CourseModel(
           heading: element['title'],
-          image: element['image'],
-          courseLink: element['link'],
-          successRate: '',
+          image: element['image_480x270'],
+          courseLink: element['url'],
+          successRate: '', // You can add the success rate if it's available in the API response
         );
-        course.add(courseModel);
+        courses.add(courseModel);
       });
     } else {
       print(response.statusCode);

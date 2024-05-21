@@ -10,8 +10,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 class CourseTile extends StatelessWidget {
   final String imageURL, title, courseURL, successRate;
 
-  CourseTile(
-      { required this.imageURL,
+  const CourseTile(
+      {super.key,  required this.imageURL,
   required this.title,
   required this.courseURL,
    required this.successRate});
@@ -20,7 +20,7 @@ class CourseTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: new Card(
+      child:  Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14.0),

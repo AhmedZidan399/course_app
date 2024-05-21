@@ -1,11 +1,11 @@
+// ignore_for_file: deprecated_member_use, library_private_types_in_public_api
+
 import 'dart:async';
-// import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class CourseView extends StatefulWidget {
-  final String  courseUrl;
+  final String courseUrl;
   CourseView({required this.courseUrl});
 
   @override
@@ -13,67 +13,42 @@ class CourseView extends StatefulWidget {
 }
 
 class _CourseViewState extends State<CourseView> {
-  final Completer<WebViewController> _controller =
-      Completer<WebViewController>();
-  final flutterWebviewPlugin = FlutterWebviewPlugin();
+  final Completer<InAppWebViewController> _controller = Completer<InAppWebViewController>();
 
-  @override
-  void initState() {
-    super.initState();
-    // Optionally, you can listen to webview events
-    flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
-      print("State: ${state.type} ${state.url}");
-    });
-  }
-  // @override    
-  // void initState() {
-  //   super.initState();
-  //   // Enable hybrid composition for Android if necessary
-  //   if (Platform.isAndroid) {
-  //     WebView.platform = SurfaceAndroidWebView();
-  //   }
-  // }
-  
-
- @override
-  void dispose() {
-    flutterWebviewPlugin.dispose();
-    super.dispose();
-  }
   @override
   Widget build(BuildContext context) {
-    return  WebviewScaffold(
-      url: widget.courseUrl,
-      appBar: AppBar(
-        title: Text("WebView Example Replacement"),
-      ),
-      withZoom: true,
-      withLocalStorage: true,
-      hidden: true,
-      initialChild: Container(
-        color: Colors.white,
-        child: Center(
-          child: CircularProgressIndicator(),
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: InAppWebView(
+            initialUrlRequest: URLRequest(
+               url: WebUri(widget.courseUrl)),
+            
+            
+            initialOptions: InAppWebViewGroupOptions(
+              crossPlatform: InAppWebViewOptions(
+                javaScriptEnabled: true,
+              ),
+            ),
+            onWebViewCreated: (InAppWebViewController webViewController) {
+              _controller.complete(webViewController);
+            },
+            onLoadStart: (controller, url) {
+              print("Started loading: $url");
+            },
+            onLoadStop: (controller, url) async {
+              print("Finished loading: $url");
+            },
+            onLoadError: (controller, url, code, message) {
+              print("Error loading: $url, Error: $message");
+            },
+          ),
         ),
       ),
     );
-    // Scaffold(
-    //   body: SafeArea(
-    //     child: Container(
-    //       height: MediaQuery.of(context).size.height,
-    //       width: MediaQuery.of(context).size.width,
-    //       child: 
-    //       WebView(
-    //         initialUrl: widget.courseUrl,
-    //         javascriptMode: JavascriptMode.unrestricted,
-    //         onWebViewCreated: ((WebViewController webviewController) {
-    //           _controller.complete(webviewController);
-    //         }),
-    //       ),
-    //     ),
-    //   ),
-    // );
   }
-  
 }
+
 
