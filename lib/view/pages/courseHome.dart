@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
     Course courseClass = Course();
     await courseClass.getCourse();
     setState(() {
-      courses = courseClass.courses;
+      courses = courseClass.course;
       _loading = false;
     });
   }
